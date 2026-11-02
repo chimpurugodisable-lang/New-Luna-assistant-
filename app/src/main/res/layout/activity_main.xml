@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Luna"
+            android:src="@drawable/ic_luna" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Luna"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Your voice assistant. Just say &quot;Hey Luna&quot;."
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#1F7B61FF"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Luna is off"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Start Luna" />
+
+        <Button
+            android:id="@+id/btnTalk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Talk to Luna now" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Language"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English" />
+
+            <RadioButton
+                android:id="@+id/rbYoruba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yorùbá" />
+
+            <RadioButton
+                android:id="@+id/rbIgbo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Igbo" />
+
+            <RadioButton
+                android:id="@+id/rbHausa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hausa" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="One-time setup"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Grant permissions" />
+
+        <Button
+            android:id="@+id/btnOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Allow Luna to open apps" />
+
+        <Button
+            android:id="@+id/btnBattery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Keep Luna running in the background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="4dp"
+            android:text="Try saying:\n• Hey Luna… open WhatsApp\n• Hey Luna… call Mummy\n• Hey Luna… text Tunde saying I'm on my way\n• Hey Luna… open camera\n\nYorùbá: ṣí WhatsApp · pe Mummy\nIgbo: mepee WhatsApp · kpọọ Mummy\nHausa: buɗe WhatsApp · kira Mummy"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>

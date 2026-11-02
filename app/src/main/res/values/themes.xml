@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="luna_night">#2A1F6B</color>
+    <color name="luna_glow">#F5E6A8</color>
+
+    <style name="Theme.Luna" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/luna_night</item>
+        <item name="colorPrimaryDark">@color/luna_night</item>
+        <item name="colorAccent">#7B61FF</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+# The voice model is downloaded automatically during the GitHub build
+app/src/main/assets/model-en-us/
