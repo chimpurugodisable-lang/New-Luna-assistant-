@@ -1,0 +1,57 @@
+name: Unpack and build Luna
+
+on:
+  push:
+    paths: ['Luna-source.zip', '.github/workflows/setup.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Unpack the code
+        run: |
+          if [ -f Luna-source.zip ]; then
+            unzip -q -o Luna-source.zip -d /tmp/src
+            cp -a /tmp/src/luna/. .
+            git rm -q Luna-source.zip
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Unpack Luna source code"
+            git push
+          fi
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Download the voice model
+        run: |
+          mkdir -p app/src/main/assets
+          curl -sSL -o model.zip https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
+          unzip -q model.zip
+          rm -rf app/src/main/assets/model-en-us
+          mv vosk-model-small-en-us-0.15 app/src/main/assets/model-en-us
+          uuidgen > app/src/main/assets/model-en-us/uuid
+
+      - name: Build the app
+        run: gradle assembleDebug --no-daemon
+
+      - name: Publish Luna.apk to Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk Luna.apk
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest Luna.apk --title "Luna (latest build)" --notes "Tap Luna.apk to download and install."
