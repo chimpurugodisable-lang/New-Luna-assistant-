@@ -2,7 +2,6 @@ name: Unpack and build Luna
 
 on:
   push:
-    paths: ['Luna-source.zip', '.github/workflows/setup.yml']
   workflow_dispatch:
 
 permissions:
@@ -18,6 +17,7 @@ jobs:
         run: |
           if [ -f Luna-source.zip ]; then
             unzip -q -o Luna-source.zip -d /tmp/src
+            rm -rf /tmp/src/luna/.github
             cp -a /tmp/src/luna/. .
             git rm -q Luna-source.zip
             git config user.name "github-actions[bot]"
